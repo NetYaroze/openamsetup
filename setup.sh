@@ -3,13 +3,10 @@
 set -e
 set -x
 
-JDK=jdk-7u75-linux-x64
-#JDK=jdk-8u131-linux-x64
+JDK=jdk-8u131-linux-x64
 AM=13.5.0
-AGENT=3.3.4
-AGENT4=4.0.0
+AGENT4=4.1.0
 J2EE_AGENT=Tomcat-v6-Agent_3.5.1
-#DJ=2.4.6
 TOMCAT=apache-tomcat-8.0.33
 PWFILE=~/pw.txt
 J2EE_TOMCAT_DIR=~/apache-j2ee
@@ -17,7 +14,6 @@ J2EE_ZIP=/staging/$J2EE_AGENT.zip
 J2EE_ROOT=~/j2ee_agents
 J2EE_TYPE=tomcat_v6_agent
 
-# ssoadm install seems to need this (but only when running this via newvm.sh)
 export JAVA_HOME=/usr/java/default/jre
 
 UNZIP='unzip -o'
@@ -81,6 +77,8 @@ if [ $1 == 'configure' ]; then
   fi
 
   # Add a web agent and a j2ee agent
+  mkdir /etc/httpd/web_agents
+  mkdir /etc/httpd/web_agents/4
   ssoadm create-agent -u amadmin -f $PWFILE -e / -b apache -t WebAgent -g http://$('hostname'):80 -s http://$('hostname'):8080/openam -a userpassword=cangetin
   ssoadm create-agent -u amadmin -f $PWFILE -e / -b j2ee -t J2EEAgent -g http://$('hostname'):8180/agentapp -s http://$('hostname'):8080/openam -a userpassword=cangetin
   
