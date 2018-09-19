@@ -237,9 +237,3 @@ sudo chmod 755 /etc/httpd/web_agents /etc/httpd/4
 
 # Copy all shell scripts since /staging/bin inevitably disappears after reboot. Not that these will all work on a VM
 cp -R /staging/bin/* ~/bin
-
-# Allow for passwordless SSH between VMs
-cp /staging/id_rsa* /home/fr/.ssh
-chown fr.fr ~/.ssh/id_rsa*
-chmod og-rwx ~/.ssh/id_rsa*
-
