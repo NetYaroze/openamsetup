@@ -14,5 +14,5 @@ I made this a long time ago when i was to deploying 13.5.0 alot. How i deploy ha
 ```sh setup.sh && sh setup.sh configure```
 
 # The obvious
-Not an official Forgerock script. Feel free to use elements but don't use this a prod environment.
+Not an official Forgerock script, this is meant for dev environments only. 
 I give no support to this at all. Fork it and do what you like.
